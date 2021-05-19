@@ -3,36 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container')
   let blocker = true
 
-  function appearing() {
-    let gridHeight = 0
-    let c = 0
-    let mytimer = setInterval(createTable,25)
-    function createTable() {
-      if (c >= 200) {
-        clearInterval(mytimer)
-        mytimer = null
-        console.log(gridHeight);
-        for (var i = 0; i < 10; i++) {
-          let bottom = document.createElement('div')
-          bottom.classList.add('taken')
-          bottom.classList.add('bottom')
-          grid.appendChild(bottom)
-        }
-
-      } else {
-        if (c%10==0) {
-          gridHeight +=40
-          grid.style.height = gridHeight+"px"
-          console.log();
-        }
-        let div = document.createElement('div');
-        div.classList.add('free')
-        grid.appendChild(div)
-        console.log(c+1);
-        c++
-      }
-    }
-  }
 
   const buttons = document.querySelectorAll(".lvl__btn")
 
