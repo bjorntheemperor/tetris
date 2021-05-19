@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Tetris by Daniel</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container">
+
+      <div class="counters">
+        <h3><div class="displayPiece">
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="taken T piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="taken T piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken T piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken T piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+        </div> <span class="tShow">0</span></h3>
+        <h3><div class="displayPiece">
+          <div class="free"></div>
+          <div class="taken J piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken J piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken J piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="taken J piece"><div class="corner"></div><div class="shine"></div></div>
+        </div> <span class="jShow">0</span></h3>
+        <h3><div class="displayPiece">
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="taken S piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken S piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="free"></div>
+          <div class="taken S piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken S piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="free"></div>
+        </div><span class="sShow">0</span></h3>
+        <h3><div class="displayPiece displayO">
+          <div class="free"></div>
+          <div class="taken O piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken O piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="taken O piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken O piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="free"></div>
+        </div><span class="oShow">0</span></h3>
+        <h3><div class="displayPiece">
+          <div class="free"></div>
+          <div class="taken Z piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken Z piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="taken Z piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken Z piece"><div class="corner"></div><div class="shine"></div></div>
+        </div><span class="zShow">0</span></h3>
+        <h3><div class="displayPiece">
+          <div class="free"></div>
+          <div class="taken L piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken L piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="taken L piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="free"></div>
+          <div class="taken L piece"><div class="corner"></div><div class="shine"></div></div>
+          <div class="free"></div>
+          <div class="free"></div>
+        </div><span class="lShow">0</span></h3>
+        <h3><div class="displayPiece displayI">
+          <div class="taken I piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken I piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken I piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="taken I piece"><div class="corner"></div><div class="shine"></div><div class="inner"></div></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="free"></div>
+          <div class="free"></div>
+        </div><span class="iShow">0</span></h3>
+
+      </div>
+
+      <div class="grid__outro">
+        <div class="grid"></div>
+        <div class="gameOverDiv">
+          <div class="gameOverInner">
+            <span class="gameOver">Game Over</span>
+            <div class="finalScore">Final score is <span id="score"></span>!</div>
+            <div class="linesSurvived">You survived <span id="lines"></span> lines!</div>
+            <div class="luckLine">Your luck level was <span class="luck"></span></div>
+            <div class="pressEnter">
+              Press <span class="enter">ENTER</span> to continue
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini__outro">
+        <div class="mini-grid"></div>
+        <h3>Score: <span id="score">0</span></h3>
+        <h3>Lines: <span id="lines"></span></h3>
+      </div>
+    </div>
+
+    <div class="intro">
+      <div class="intro__text">
+        <h1 class="intro__title">Welcome to Tetris!</h1>
+        <h3 class="intro__subtitle">Choose your level</h3>
+      </div>
+
+      <div class="levels">
+        <div class="levels__inner">
+          <button type="button" class="lvl__btn" id="0">0</button>
+          <button type="button" class="lvl__btn" id="1">1</button>
+          <button type="button" class="lvl__btn" id="2">2</button>
+          <button type="button" class="lvl__btn" id="3">3</button>
+          <button type="button" class="lvl__btn" id="4">4</button>
+          <button type="button" class="lvl__btn" id="5">5</button>
+          <button type="button" class="lvl__btn" id="6">6</button>
+          <button type="button" class="lvl__btn" id="7">7</button>
+          <button type="button" class="lvl__btn" id="8">8</button>
+          <button type="button" class="lvl__btn" id="9">9</button>
+          <button type="button" class="lvl__btn" id="10">10</button>
+          <button type="button" class="lvl__btn" id="11">11</button>
+          <button type="button" class="lvl__btn" id="12">12</button>
+          <button type="button" class="lvl__btn" id="13">13</button>
+          <button type="button" class="lvl__btn" id="14">14</button>
+          <button type="button" class="lvl__btn" id="15">15</button>
+          <button type="button" class="lvl__btn" id="16">16</button>
+          <button type="button" class="lvl__btn" id="17">17</button>
+          <button type="button" class="lvl__btn" id="18">18</button>
+          <button type="button" class="lvl__btn" id="19">19</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="info__title">
+        Control keys:
+      </div>
+      <div class="info_sub">
+        <p>&#8592; - left</p>
+        <p>&#8594; - right</p>
+        <p>&#8595; - down</p>
+        <p>X - rotate piece clockwise</p>
+        <p>Z - rotate piece counterclockwise</p>
+      </div>
+    </div>
+
+  </body>
+  <script src="app.js" type="text/javascript"></script>
+</html>
