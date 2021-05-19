@@ -786,7 +786,7 @@ function playTetris(lineCounter){
 
   }
   let counterPiece = Array.from(document.querySelectorAll('.displayPiece div'))
-  function levelTrans(colorMain, colorSeconda
+  function levelTrans(colorMain, colorSecondary){
     squares.forEach(index => {
       if (index.classList.contains('J') || index.classList.contains('S')) {
         index.style.background = 'linear-gradient(345deg, black, '+colorMain+')'
