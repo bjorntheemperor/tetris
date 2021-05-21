@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container')
   let blocker = true
 
-
+  console.log(document.cookie);
   const buttons = document.querySelectorAll(".lvl__btn")
 
   for (let button of buttons) {
