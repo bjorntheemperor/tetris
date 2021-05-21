@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector(".grid")
   const container = document.querySelector('.container')
   let blocker = true
-
+  console.log("Hello!");
   console.log(document.cookie);
   const buttons = document.querySelectorAll(".lvl__btn")
 
