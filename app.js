@@ -22,6 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
 function hideIntro() {
   document.querySelector('.intro').style.display = "none"
 }
+const btnZ = document.querySelector('.btnZ')
+const btnX = document.querySelector('.btnX')
+const btnL = document.querySelector('.btnL')
+const btnD = document.querySelector('.btnD')
+const btnR = document.querySelector('.btnR')
+const btnP = document.querySelector('.btnP')
+
+btnZ.addEventListener('clicked', () => {
+  console.log(btnZ+" works");
+})
+
 
 function displayPlayground() {
   container.style.display = "flex"
