@@ -1,9 +1,15 @@
-
+/* *,
+*:before,
+*:after {
+  box-sizing: border-box;
+} */
 h1,h2,h3,h4,h5,h6{
   margin: 0;
 }
 body{
   background: linear-gradient(45deg,blue,red);
+  /* background: url("images/bc.jpg") center no-repeat;
+  background-size: cover; */
   color:white;
   font-family: 'VT323', monospace;
   height: 100vh;
@@ -249,6 +255,7 @@ body{
   display: none;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 30px;
 }
 .controls{
   position: relative;
@@ -264,21 +271,25 @@ body{
   justify-content: flex-end;
 }
 .rotate button, .arrows button{
+  color: white;
+  background: linear-gradient(0deg, transparent, #7ff7f4);
   font-family: inherit;
   font-size: 50px;
   width: 125px;
   height: 125px;
-  border: 5px solid black;
+  border: 5px solid white;
   border-radius: 35%;
 }
 .pause button{
+  color: white;
+  background: linear-gradient(0deg, transparent, #7ff7f4);
   margin-top: 50px;
   font-family: inherit;
   font-size: 50px;
-  width: 200px;
+  width: 225px;
   height: 125px;
-  border: 5px solid black;
-  border-radius: 35%;
+  border: 5px solid white;
+  border-radius: 12%;
 }
 
 @media screen and (max-width: 1640px){
@@ -350,6 +361,29 @@ body{
     width: 128px;
     height: 64px;
   }
+
+
+  .gameOverDiv{
+    max-width: 320px;
+  }
+  .gameOverInner{
+    bottom: 525px;
+  }
+  .gameOver{
+    font-size: 65px;
+  }
+  .finalScore{
+    font-size: 35px;
+  }
+  .linesSurvived{
+    font-size: 32px;
+  }
+  .pressEnter{
+    font-size: 40px;
+  }
+  .enter{
+    font-size: 44px;
+  }
 }
 @media screen and (max-width: 1250px){
   .info{
@@ -357,5 +391,189 @@ body{
   }
   .container{
     padding: 40px 50px 0;
+  }
+
+}
+
+@media screen and (max-width: 1000px){
+  .container{
+    padding: 40px 15px 0;
+  }
+  .controls{
+    z-index: 100;
+    top: -25px;
+  }
+  .rotate button, .arrows button{
+    width: 110px;
+    height: 110px;
+  }
+  .pause button{
+    margin-top: 30px;
+    height: 110px;
+  }
+  .iShow, .oShow, .tShow, .jShow, .sShow, .zShow, .lShow {
+    font-size: 50px;
+}
+@media screen and (max-width: 720px){
+  .grid{
+    width: 240px;
+    height: 480px;
+    border: 3px solid white;
+  }
+  .free, .displayFree{
+    height: 21px;
+    width: 21px;
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  .piece .shine{
+    margin-left: 3px;
+    width: 8px;
+    height: 8px;
+  }
+  .piece .corner{
+    width: 3px;
+    height: 3px;
+  }
+  .piece .inner{
+    left: 3px;
+    width: 15px;
+    height: 15px;
+  }
+  .piece{
+    height: 21px;
+    width: 21px;
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  .mini-grid{
+    width: 96px;
+    height: 96px;
+    border: 3px solid white;
+  }
+  .displayPiece{
+    width: 96px;
+    height: 48px;
+  }
+  .gameOverDiv{
+    max-width: 320px;
+  }
+
+
+
+  .intro__title{
+    font-size: 65px;
+  }
+  .intro__subtitle{
+    font-size: 40px;
+  }
+  .counters h3{
+    margin-bottom: 15px;
+  }
+  .displayI {
+    margin-top: 5px;
+  }
+  .tShow, .jShow, .sShow, .zShow, .lShow {
+    margin-left: 22px;
+    font-size: 35px;
+  }
+  .iShow, .oShow{
+    font-size: 35px;
+    margin-left: 2px;
+  }
+  .controls{
+    top: 10px;
+  }
+  .rotate button, .arrows button {
+    width: 70px;
+    height: 70px;
+  }
+  .pause button {
+    margin-top: 25px;
+    height: 70px;
+    border-radius: 2em;
+  }
+  .stats{
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 530px){
+
+  .grid{
+    width: 160px;
+    height: 320px;
+    border: 2px solid white;
+  }
+  .free, .displayFree{
+    height: 14px;
+    width: 14px;
+    margin-left: 2px;
+    margin-top: 2px;
+  }
+  .piece .shine{
+    margin-left: 2px;
+    width: 5px;
+    height: 5px;
+  }
+  .piece .corner{
+    width: 2px;
+    height: 2px;
+  }
+  .piece .inner{
+    left: 2px;
+    width: 10px;
+    height: 10px;
+  }
+  .piece{
+    height: 14px;
+    width: 14px;
+    margin-left: 2px;
+    margin-top: 2px;
+  }
+  .mini-grid{
+    width: 64px;
+    height: 64px;
+    border: 2px solid white;
+  }
+  .displayPiece{
+    width: 64px;
+    height: 32px;
+  }
+  .gameOverDiv{
+    max-width: 160px;
+  }
+
+
+  .displayO, .displayI {
+      margin-left: 10px;
+  }
+  .iShow, .oShow {
+    margin-left: 13px;
+}
+  .intro__title{
+    font-size: 50px;
+  }
+  .intro__subtitle{
+    font-size: 30px;
+  }
+  .levels{
+    margin-top: 40px;
+  }
+  .levels__inner{
+    max-width: 320px;
+  }
+  .lvl__btn{
+    width: 80px;
+    height: 80px;
+    font-size: 60px;
+  }
+  .rotate button, .arrows button {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+  }
+  .controls {
+    top: 45px;
   }
 }

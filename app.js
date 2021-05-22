@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.container')
   let blocker = true
   const mobileControls = document.querySelector('.controls__outer')
+
   const buttons = document.querySelectorAll(".lvl__btn")
 
   for (let button of buttons) {
@@ -28,7 +29,6 @@ const btnL = document.querySelector('.btnL')
 const btnD = document.querySelector('.btnD')
 const btnR = document.querySelector('.btnR')
 const btnP = document.querySelector('.btnP')
-
 
 function displayPlayground() {
   container.style.display = "flex"
@@ -58,7 +58,6 @@ function playTetris(lineCounter){
   btnP.addEventListener('click', () => {
     pauseGame()
   })
-
   function createTable(){
     document.querySelector('.container').style.display = "flex"
     for (let i = 0; i < 200; i++) {
