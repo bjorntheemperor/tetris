@@ -3,11 +3,14 @@
   <head>
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Tetris by Daniel</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   </head>
   <body>
+
+
 
     <div class="container">
 
@@ -102,10 +105,34 @@
 
       <div class="mini__outro">
         <div class="mini-grid"></div>
-        <h3>Score: <span id="score">0</span></h3>
-        <h3>Lines: <span id="lines"></span></h3>
+        <div class="stats">
+          <h3>Score: <span id="score">0</span></h3>
+          <h3>Lines: <span id="lines"></span></h3>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="controls__outer">
+      <div class="controls">
+        <div class="controls__main">
+          <div class="controls__item rotate">
+            <button class="btnZ" type="button" name="button">Z</button>
+            <button class="btnX" type="button" name="button">X</button>
+          </div>
+          <div class="controls__item arrows">
+            <button class="btnL" type="button" name="button">&#8592;</button>
+            <button class="btnD" type="button" name="button">&#8595;</button>
+            <button class="btnR" type="button" name="button">&#8594;</button>
+          </div>
+        </div>
+
+        <div class="controls__item pause">
+          <button class="btnP" type="button" name="button">PAUSE</button>
+        </div>
       </div>
     </div>
+
 
     <div class="intro">
       <div class="intro__text">
@@ -136,6 +163,7 @@
           <button type="button" class="lvl__btn" id="18">18</button>
           <button type="button" class="lvl__btn" id="19">19</button>
         </div>
+
       </div>
     </div>
 
@@ -147,8 +175,11 @@
         <p>&#8592; - left</p>
         <p>&#8594; - right</p>
         <p>&#8595; - down</p>
-        <p>X - rotate piece clockwise</p>
-        <p>Z - rotate piece counterclockwise</p>
+        <p>X - rotate piece</p>
+        <p>clockwise</p>
+        <p>Z - rotate piece</p>
+        <p>counterclockwise</p>
+        <p>Enter - pause</p>
       </div>
     </div>
 
