@@ -2,13 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector(".grid")
   const container = document.querySelector('.container')
   let blocker = true
-
+  const mobileControls = document.querySelector('.controls__outer')
   const buttons = document.querySelectorAll(".lvl__btn")
 
   for (let button of buttons) {
     button.addEventListener('click', function (e) {
       e.preventDefault()
-
+      if (window.outerWidth <= 1250) {
+        mobileControls.style.display = "block"
+      } else {
+        mobileControls.style.display = "none"
+      }
       hideIntro()
       displayPlayground()
       playTetris(button.id*10)
