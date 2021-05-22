@@ -577,3 +577,25 @@ body{
     top: 45px;
   }
 }
+@media screen and (max-width: 400px){
+  .container {
+    margin-right: 10px;
+    padding: 40px 0px 0;
+  }
+  .controls__outer{
+    padding: 0px 10px;
+  }
+  .rotate button, .arrows button {
+    width: 55px;
+    height: 55px;
+    font-size: 30px;
+  }
+  .pause button{
+    margin-top: 35px;
+  }
+
+  .pause{
+    justify-content: center;
+  }
+
+}
