@@ -29,7 +29,7 @@ const btnD = document.querySelector('.btnD')
 const btnR = document.querySelector('.btnR')
 const btnP = document.querySelector('.btnP')
 
-btnZ.addEventListener('onclick', () => {
+btnZ.addEventListener('click', () => {
   console.log(btnZ+" works");
 })
 
