@@ -30,7 +30,22 @@ const btnR = document.querySelector('.btnR')
 const btnP = document.querySelector('.btnP')
 
 btnZ.addEventListener('click', () => {
-  console.log(btnZ+" works");
+  rotateZ()
+})
+btnX.addEventListener('click', () => {
+  rotateX()
+})
+btnL.addEventListener('click', () => {
+  moveLeft()
+})
+btnD.addEventListener('click', () => {
+  moveDown()
+})
+btnR.addEventListener('click', () => {
+  moveRight()
+})
+btnP.addEventListener('click', () => {
+  pauseGame()
 })
 
 
