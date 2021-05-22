@@ -29,25 +29,6 @@ const btnD = document.querySelector('.btnD')
 const btnR = document.querySelector('.btnR')
 const btnP = document.querySelector('.btnP')
 
-btnZ.addEventListener('click', () => {
-  rotateZ()
-})
-btnX.addEventListener('click', () => {
-  rotateX()
-})
-btnL.addEventListener('click', () => {
-  moveLeft()
-})
-btnD.addEventListener('click', () => {
-  moveDown()
-})
-btnR.addEventListener('click', () => {
-  moveRight()
-})
-btnP.addEventListener('click', () => {
-  pauseGame()
-})
-
 
 function displayPlayground() {
   container.style.display = "flex"
@@ -59,6 +40,24 @@ function displayPlayground() {
 }
 
 function playTetris(lineCounter){
+  btnZ.addEventListener('click', () => {
+    rotateZ()
+  })
+  btnX.addEventListener('click', () => {
+    rotateX()
+  })
+  btnL.addEventListener('click', () => {
+    moveLeft()
+  })
+  btnD.addEventListener('click', () => {
+    moveDown()
+  })
+  btnR.addEventListener('click', () => {
+    moveRight()
+  })
+  btnP.addEventListener('click', () => {
+    pauseGame()
+  })
 
   function createTable(){
     document.querySelector('.container').style.display = "flex"
