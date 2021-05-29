@@ -29,6 +29,9 @@ const btnL = document.querySelector('.btnL')
 const btnD = document.querySelector('.btnD')
 const btnR = document.querySelector('.btnR')
 const btnP = document.querySelector('.btnP')
+const enter = document.querySelector('.enter')
+
+
 
 function displayPlayground() {
   container.style.display = "flex"
@@ -58,6 +61,7 @@ function playTetris(lineCounter){
   btnP.addEventListener('click', () => {
     pauseGame()
   })
+
   function createTable(){
     document.querySelector('.container').style.display = "flex"
     for (let i = 0; i < 200; i++) {
@@ -83,7 +87,7 @@ function playTetris(lineCounter){
   createMiniTable()
 
   let squares = Array.from(document.querySelectorAll('.grid div'))
-  const scoreDisplay = document.querySelector('#score')
+  const scoreDisplay = document.querySelectorAll('#score')
   const linesDisplay = document.querySelectorAll('#lines')
   const width = 10
   let timerId
@@ -156,7 +160,8 @@ function playTetris(lineCounter){
   lShow.innerHTML = 0
   iShow.innerHTML = 0
 
-  scoreDisplay.innerHTML = 0
+  scoreDisplay[0].innerHTML = 0
+  scoreDisplay[1].innerHTML = 0
 
   let tCounter = 0
   let jCounter = 0
@@ -936,7 +941,6 @@ let iContainer = [] // объявляем контейнер
              console.log(squaresRemoved);
              // массив квадратов равняется новому массиву квадратов + добавоенныее в начало массива удаленные квадраты, которые имеют теперь только класс free
              squares = squaresRemoved.concat(squares)
-             console.log(squares);
              squares.forEach(boom => {grid.appendChild(boom)}) // непосредственно добавояем квадраты
              // Выставляем opacity 1 для всех элементов
              for (var i = 0; i < squares.length; i++) {
@@ -1005,7 +1009,7 @@ let iContainer = [] // объявляем контейнер
     score = score+(1200*(levelCounter+1))
     console.log("За 4 ряда на "+levelCounter+" уровне, Вы получили "+1200*(levelCounter+1)+" очков");
   }
-  scoreDisplay.innerHTML = score
+  scoreDisplay[1].innerHTML = score
   tetrisCombo = 0 // Reseting c-c-combo!
   console.log("let's Count combos - "+tetrisCombo);
 } // end of addScore()
@@ -1029,7 +1033,7 @@ let iContainer = [] // объявляем контейнер
   function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       gameHasEnded = true;
-      scoreDisplay.innerHTML = score;
+      scoreDisplay[0].innerHTML = score;
       linesDisplay[0].innerHTML = lineCounter
       checkLuck()
       clearInterval(timerId)
@@ -1037,11 +1041,12 @@ let iContainer = [] // объявляем контейнер
       console.log("GAME OVER");
       blocker = true;
       pauseBlocker = true
+      //current = null
 
       setTimeout(()=>{
 
         document.querySelector('.gameOverDiv').style.display = "block"
-
+        document.querySelector('.info').style.display = "none"
         squares.forEach(square => {
           let freediv = document.querySelectorAll('.grid div')    // Убираем квадрат из квадрата фигуры
           for (var i = 0; i < freediv.length; i++) {
@@ -1068,12 +1073,10 @@ let iContainer = [] // объявляем контейнер
           }
         }
 
-        const enter = document.querySelector('.enter')
+
         function enterBlack() {
           enter.style.color = 'transparent'
-          console.log('Enter became BLACK');
           setTimeout(()=>{
-            console.log('Enter became WHITE');
             enter.style.color = 'white'
           },500)
         }
@@ -1083,11 +1086,12 @@ let iContainer = [] // объявляем контейнер
         function continueGame() {
           container.style.display = "none"
           document.querySelector('.intro').style.display = "block"
+          document.querySelector('.info').style.display = "block"
+          mobileControls.style.display = "none"
         }
         function controlContinue(e) {
           if (e.keyCode === 13){
             if (gameHasEnded == true) {
-              console.log('this shit does work');
               continueGame()
               clearInterval(flashingTimer)
               document.querySelector('.gameOverDiv').style.display = "none"
@@ -1095,13 +1099,21 @@ let iContainer = [] // объявляем контейнер
             }
           }
         }
+        enter.addEventListener('click', () => {
+          if (gameHasEnded == true) {
+            continueGame()
+            clearInterval(flashingTimer)
+            document.querySelector('.gameOverDiv').style.display = "none"
+            gameHasEnded = false
+          }
+        })
         document.addEventListener('keyup', controlContinue)
 
-      },2000)
+      },2000) // setTimeout end
 
-    }
-  }
+    } // if end
+  } // gameOver() end
 
-}
+} //playTetris() end
 
 })
