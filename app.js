@@ -177,7 +177,6 @@ function playTetris(lineCounter){
   let score = 0
   linesDisplay[1].innerHTML = lineCounter
   let levelCounter = (lineCounter-(lineCounter%10))/10
-  console.log('current Level is '+levelCounter);
   let currentRotation = 0; // Положение фигуры
   let random = Math.floor(Math.random()* thePieces.length) // Переменная для определения случайной фигуры
   let nextRandom = Math.floor(Math.random()* thePieces.length) // Генерируем следующую случайную фигуру
@@ -192,7 +191,6 @@ function playTetris(lineCounter){
   luckLine.style.display = "none"
   function piecesCounter() {
     totalPieces +=1
-    console.log("Total pieces is "+totalPieces);
     if (current == thePieces[0][currentRotation]) {
       tCounter +=1
       tShow.innerHTML = tCounter
@@ -229,12 +227,9 @@ function playTetris(lineCounter){
   setTimeout(()=>{
     timerId = setInterval(moveDown, currentSpeed)
   },2000)
-
-  console.log("timerID at the beginning is "+timerId);
   draw()
   function levelCheck(){
     levelCounter = (lineCounter-(lineCounter%10))/10
-    console.log("current level is "+levelCounter);
   }
   // Определяем скорость в зависимости от текущего уровня
   function setSpeed(){
@@ -460,7 +455,6 @@ function playTetris(lineCounter){
           // Вызывает новую случайную фигуру после столкновения
     current.forEach(index => squares[currentPosition + index].classList.remove('free'))
     current.forEach(index => squares[currentPosition + index].classList.add('taken'))
-    console.log("Элемент #"+random+" - ЗАФИКСИРОВАН")
     intervalEnded = true;
     random = nextRandom
     nextRandom = Math.floor(Math.random()*thePieces.length)
@@ -489,16 +483,10 @@ function playTetris(lineCounter){
         timerId = null
       }
 
-      console.log("Фиксируем элемент #"+random);
       intervalEnded = false;
-      if (intervalEnded == false) {
-        console.log("Interval started");
-      }
       setTimeout(function () {
 
         intervalEnded = true;
-        console.log("Interval ended - "+intervalEnded);
-
 
           if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))){
 
@@ -508,7 +496,6 @@ function playTetris(lineCounter){
             moveDown()
             clearInterval(timerId)
             timerId = setInterval(moveDown, currentSpeed)
-            console.log("timerID is = "+timerId);
           }
 
       }, currentSpeed);
@@ -519,21 +506,17 @@ function playTetris(lineCounter){
   function moveLeft() {
     if (blocker == false) {
       undraw()
-      console.log("Двигаем фигуру №"+random+" ВЛЕВО");
       const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
       if (!isAtLeftEdge) {
         currentPosition -= 1
-
-      } else console.log("Нельзя двигать фигуру влево из-за левого края");
+      }
       if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         currentPosition +=1
-        console.log("Нельзя двигать фигуру влево из-за фигуры слева");
       }
       draw()
       if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
         freeze()
         clearInterval(timerId);
-        console.log("timerID at rotation Z rihgt is = "+timerId);
       }
     }
   }
@@ -541,21 +524,17 @@ function playTetris(lineCounter){
   function moveRight() {
     if (blocker == false) {
       undraw()
-      console.log("Двигаем фигуру №"+random+" ВПРАВО");
       const isAtRightEdge = current.some(index => (currentPosition + index) % width === width -1)
       if(!isAtRightEdge) {
         currentPosition +=1
-
-      } else console.log("Нельзя двигать фигуру вправо из-за правого края");
+      }
       if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         currentPosition -=1
-        console.log("Нельзя двигать фигуру вправо из-за фигуры справа");
       }
       draw()
       if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
         freeze()
         clearInterval(timerId);
-        console.log("timerID at rotation Z rihgt is = "+timerId);
       }
     }
 
@@ -564,11 +543,6 @@ function playTetris(lineCounter){
 
 
   function checkRotationZ(){
-    console.log("-----------РОТАЦИЯ Z-----------");
-    console.log("текущая позиция = "+currentPosition);
-    console.log("Ротация возможна - "+current.every(index => squares[currentPosition + index].classList.contains('free')));
-    console.log("текущая ротация = "+currentRotation);
-
     if (currentPosition % width >= 5) { // Определяем на какой стороне происходит ротация
       const isAtRightEdge = current.some(index => (currentPosition + index) % width === 0)
       if (isAtRightEdge) {
@@ -584,7 +558,6 @@ function playTetris(lineCounter){
           }
           currentRotation--
           current = thePieces[random][currentRotation]
-          console.log("Ротация не удалась из-за недостатка места");
         }
     }
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
@@ -606,7 +579,6 @@ function playTetris(lineCounter){
         }
         currentRotation--
         current = thePieces[random][currentRotation]
-        console.log("Ротация не удалась из-за недостатка места");
       }
     }
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
@@ -617,12 +589,6 @@ function playTetris(lineCounter){
   }
 
   function checkRotationX(){
-    console.log("-----------РОТАЦИЯ X-----------");
-    console.log("текущая элемент - #"+random);
-    console.log("текущая позиция = "+currentPosition);
-    console.log("Ротация возможна - "+current.every(index => squares[currentPosition + index].classList.contains('free')));
-    console.log("текущая ротация = "+currentRotation);
-
     if (currentPosition % width >= 5) {
       const isAtRightEdge = current.some(index => (currentPosition + index) % width === 0)
       if (isAtRightEdge) {
@@ -638,7 +604,6 @@ function playTetris(lineCounter){
             currentRotation = 0
           }
           current = thePieces[random][currentRotation]
-          console.log("Ротация не удалась из-за недостатка места");
         }
       }
       if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
@@ -660,7 +625,6 @@ function playTetris(lineCounter){
             currentRotation = 0
           }
           current = thePieces[random][currentRotation]
-          console.log("Ротация не удалась из-за недостатка места");
         }
       }
       if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
@@ -802,16 +766,12 @@ function playTetris(lineCounter){
       if (timerId) {
         clearInterval(timerId)
         timerId = null
-        console.log("--------GAME PAUSED--------");
-        console.log("Timer ID is - "+timerId);
         blocker = true
       } else {
         blocker = false
         timerId = setInterval(moveDown, currentSpeed)
         freeze()
         displayShape()
-        console.log("-------GAME UNPAUSED-------");
-        console.log("Timer ID is - "+timerId);
       }
     }
 
@@ -890,12 +850,9 @@ let iContainer = [] // объявляем контейнер
          undraw()
          pauseBlocker = true
          blocker = true;
-         console.log('blocking controls - '+blocker);
-         console.log('bingo!');
          lineCounter +=1
          levelCheck()
          tetrisCombo +=1
-         console.log('tetris combo = '+tetrisCombo);
          linesDisplay[1].innerHTML = lineCounter
          // анимируем плавное исчезновение элементов. !!! При этом элементы, по факту, никуда не убираються !!!
          row.forEach(index => {
@@ -904,7 +861,6 @@ let iContainer = [] // объявляем контейнер
 
         // Контейнер вбирает в себя номер ряда который готов убраться
          iContainer = iContainer.concat(i)
-         console.log(iContainer);
 
         // выставляем задержку на то, чтобы элементы пропали
          setTimeout(function () {
@@ -912,7 +868,6 @@ let iContainer = [] // объявляем контейнер
            for (var j = 0; j < iContainer.length; j++) { // цикл for для рядов, которые запомнил контейнер
 
              const row = [iContainer[j], iContainer[j]+1, iContainer[j]+2, iContainer[j]+3, iContainer[j]+4, iContainer[j]+5, iContainer[j]+6, iContainer[j]+7, iContainer[j]+8, iContainer[j]+9]
-             console.log(row);
              // избавляемся от всех классов и тегов у ряда, добалвяя класс free
              row.forEach(index => {
                squares[index].classList.remove('taken')
@@ -937,8 +892,6 @@ let iContainer = [] // объявляем контейнер
 
              // удаляем из массива квадратов те квадраты, которые должны убраться и записываем их в переменную squaresRemoved
              const squaresRemoved = squares.splice(iContainer[j], width)
-
-             console.log(squaresRemoved);
              // массив квадратов равняется новому массиву квадратов + добавоенныее в начало массива удаленные квадраты, которые имеют теперь только класс free
              squares = squaresRemoved.concat(squares)
              squares.forEach(boom => {grid.appendChild(boom)}) // непосредственно добавояем квадраты
@@ -971,7 +924,6 @@ let iContainer = [] // объявляем контейнер
       timerId = setInterval(moveDown,currentSpeed)
     },1000)
     score = score+(40*(levelCounter+1))
-    console.log("За 1 ряд на "+levelCounter+" уровне, Вы получили "+40*(levelCounter+1)+" очков");
   }
   if (tetrisCombo==2) {
     clearInterval(timerId)
@@ -983,7 +935,6 @@ let iContainer = [] // объявляем контейнер
       timerId = setInterval(moveDown,currentSpeed)
     },1000)
     score = score+(100*(levelCounter+1))
-    console.log("За 2 ряда на "+levelCounter+" уровне, Вы получили "+100*(levelCounter+1)+" очков");
   }
   if (tetrisCombo==3) {
     clearInterval(timerId)
@@ -995,7 +946,6 @@ let iContainer = [] // объявляем контейнер
       timerId = setInterval(moveDown,currentSpeed)
     },1000)
     score = score+(300*(levelCounter+1))
-    console.log("За 3 ряда на "+levelCounter+" уровне, Вы получили "+300*(levelCounter+1)+" очков");
   }
   if (tetrisCombo==4) {
     clearInterval(timerId)
@@ -1007,11 +957,9 @@ let iContainer = [] // объявляем контейнер
       timerId = setInterval(moveDown,currentSpeed)
     },1000)
     score = score+(1200*(levelCounter+1))
-    console.log("За 4 ряда на "+levelCounter+" уровне, Вы получили "+1200*(levelCounter+1)+" очков");
   }
   scoreDisplay[1].innerHTML = score
   tetrisCombo = 0 // Reseting c-c-combo!
-  console.log("let's Count combos - "+tetrisCombo);
 } // end of addScore()
 
 
@@ -1038,7 +986,6 @@ let iContainer = [] // объявляем контейнер
       checkLuck()
       clearInterval(timerId)
       timerId = null
-      console.log("GAME OVER");
       blocker = true;
       pauseBlocker = true
       //current = null
